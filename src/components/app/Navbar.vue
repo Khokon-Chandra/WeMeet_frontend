@@ -1,8 +1,10 @@
 <template>
-    <nav class="flex-shrink-0 bg-purple-600">
+    <nav class="flex-shrink-0 bg-purple-700 shadow-sm">
         <div class="max-w-7xl mx-auto px-2 sl:px-4 lg:px-8">
             <div class="relative flex items-center justify-between h-16">
-                <div></div>
+                <div class="max-h-full overflow-hidden bg-white block rounded-xl">
+                    <img class="h-16" src="./../../../public/favicon.png" alt="Your Company" />
+                </div>
                 <div class="flex lg:hidden">
                     <button
                         class="bg-purple-600 inline-flex items-center justify-center p-2 rounded-md text-white hover:text-white hover:bg-purple-600 focus:ring-2 focus:ring-white focus:ring-offset-2">
