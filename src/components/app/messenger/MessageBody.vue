@@ -1,6 +1,6 @@
 <template>
-    <div id="message"
-        class="flex flex-col space-y-4 p-3 overflow-y-auto scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-light scrollbar-w-2 scrolling-touch">
+    <perfect-scrollbar id="message"
+        class="flex flex-col space-y-4 p-3 overflow-y-auto scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-light scrollbar-w-2 scrolling-touch" v-chat-scroll>
         <!-- first message -->
         <div class="chat-message">
             <div class="flex items-end">
@@ -118,5 +118,5 @@
 
 
 
-    </div>
+    </perfect-scrollbar>
 </template>

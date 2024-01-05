@@ -1,6 +1,6 @@
 <template>
-    <div class="bg-gray-50 pr-4 sm:pr-6 lg:pr-8 lg:flex-shrink-0 lg:border-l lg:border-gray-200 xl:pr-0 hidden xl:block">
-        <div class="h-full pl-6 py-6 lg:w-80">
+    <div class="overflow-hidden bg-gray-50 pr-4 sm:pr-6 lg:pr-8 lg:flex-shrink-0 lg:border-l lg:border-gray-200 xl:pr-0 hidden xl:block">
+    <perfect-scrollbar class="chat-profile pl-6 py-6 lg:w-80 overflow-y-auto scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-light scrollbar-w-2 scrolling-touch">
 
 
 
@@ -76,5 +76,11 @@
                     </div>
             </div>
         </div>
-    </div>
-</div></template>
+    </perfect-scrollbar>
+</div>
+</template>
+<style scoped>
+.chat-profile{
+    height: calc(100vh - 80px);
+}
+</style>

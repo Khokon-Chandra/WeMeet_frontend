@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="relative min-h-screen flex flex-col bg-gray-50">
+    <div class="relative min-h-screen flex flex-col bg-gray-50 overflow-hidden h-screen">
 
       <!-- Navbar start -->
 
@@ -14,7 +14,7 @@
           <Contact></Contact>
 
           <!-- Middle content -->
-          <div class="flex-1 p:2 sm:pb-6 justify-between flex flex-col h-screen hidden xl:flex">
+          <div class="middle-content flex-1 p:2 sm:pb-6 justify-between flex flex-col hidden xl:flex h-full">
             <div class="flex sm:items-center justify-between py-3 border-b border-gray-200 p-3">
               <div class="flex items-center space-x-4">
                 <img class="h-10 w-10 sm:w-12 sm:h-12 cursor-pointer rounded-full"
@@ -82,7 +82,12 @@
 <script setup>
 
 import Navbar from "../../components/app/Navbar.vue";
-import Contact from "../../components/app/messenger/Contact.vue"
-import MessageBody from "../../components/app/messenger/MessageBody.vue"
-import Profile from "../../components/app/messenger/Profile.vue"
+import Contact from "../../components/app/messenger/Contact.vue";
+import MessageBody from "../../components/app/messenger/MessageBody.vue";
+import Profile from "../../components/app/messenger/Profile.vue";
 </script>
+<style scoped>
+.middle-content{
+  height: calc(100vh - 55px);
+}
+</style>
