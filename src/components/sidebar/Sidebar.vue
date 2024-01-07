@@ -84,7 +84,7 @@
                   class="text-xs rounded-xl uppercase my-1 py-3 px-3 font-bold block"
                   :class="[
                     isActive
-                    ? 'bg-purple-500 bg:text-purple-600 text-white shadow-xl'
+                    ? 'bg-purple-700 bg:text-purple-600 text-white shadow-xl'
                       : 'bg-transparent text-blueGray-700 hover:text-blueGray-500 hover:bg-purple-100',
                   ]"
                 >
@@ -99,7 +99,7 @@
   
             <li class="items-center">
               <router-link
-                to="/admin/users"
+                to="/admin/users-list"
                 v-slot="{ href, navigate, isActive }"
               >
                 <a
@@ -108,7 +108,7 @@
                   class="text-xs rounded-xl uppercase my-1 py-3 px-3 font-bold block"
                   :class="[
                     isActive
-                      ? 'bg-purple-500 bg:text-purple-600 text-white shadow-xl'
+                      ? 'bg-purple-700 bg:text-purple-600 text-white shadow-xl'
                       : 'bg-transparent text-blueGray-700 hover:text-blueGray-500 hover:bg-purple-100',
                   ]"
                 >
@@ -131,7 +131,7 @@
                   class="text-xs rounded-xl uppercase my-1 py-3 px-3 font-bold block"
                   :class="[
                     isActive
-                    ? 'bg-purple-500 bg:text-purple-600 text-white shadow-xl'
+                    ? 'bg-purple-700 bg:text-purple-600 text-white shadow-xl'
                       : 'bg-transparent text-blueGray-700 hover:text-blueGray-500 hover:bg-purple-100',
                   ]"
                 >
