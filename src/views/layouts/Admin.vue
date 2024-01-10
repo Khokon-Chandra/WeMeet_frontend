@@ -1,5 +1,5 @@
 <template>
-    <div>
+  <div>
     <Sidebar />
     <div class="relative md:ml-64 bg-blueGray-100">
       <div class="pt-12">
@@ -16,7 +16,7 @@
 import AdminFooter from "@/components/footers/AdminFooter.vue";
 import AdminNavbar from "@/components/navbars/AdminNavbar.vue";
 import Sidebar from "@/components/sidebar/Sidebar.vue";
-export default{
+export default {
   components: {
     Sidebar,
     AdminNavbar,
@@ -25,7 +25,7 @@ export default{
 }
 </script>
 <style>
-.content{
+.content {
   height: 80vh;
 }
 </style>

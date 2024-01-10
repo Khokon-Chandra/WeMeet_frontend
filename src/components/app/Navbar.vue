@@ -20,10 +20,8 @@
                         </div>
                         <div
                             class="ml-4 relative flex-shrink-0 text-sm text-white focus:ring-1 focus:ring-offset-1 foduc:ring-white">
-                            <button class="rounded-full flex bg-purple-700">
-                                <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                                    alt="" class="h-8 w-8 rounded-full">
-                            </button>
+
+                            <Dropdown></Dropdown>
                         </div>
                     </div>
                 </div>
@@ -31,3 +29,6 @@
         </div>
     </nav>
 </template>
+<script setup>
+import Dropdown from "@/components/app/Dropdown.vue"
+</script>

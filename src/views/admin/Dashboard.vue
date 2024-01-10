@@ -58,7 +58,7 @@
 </template>
 
 <script>
-import CardStats from "@/components/Cards/CardStats.vue";
+import CardStats from "@/components/cards/CardStats.vue";
 
 export default {
   components: {
