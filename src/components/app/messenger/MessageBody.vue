@@ -1,122 +1,79 @@
 <template>
     <perfect-scrollbar id="message"
         class="flex flex-col space-y-4 p-3 overflow-y-auto scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-light scrollbar-w-2 scrolling-touch" v-chat-scroll>
-        <!-- first message -->
-        <div class="chat-message">
-            <div class="flex items-end">
-                <div class="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-2 items-start">
+            
+        <div v-for="chat in messages" :key="chat.id" class="chat-message">
+            <div class="flex items-end" :class="[isFriend(chat)? '' : 'justify-end']" >
+                <div v-if="isFriend(chat)" class="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-2 items-start">
                     <span class="px-4 py-2 rounded-lg inline-block rounded-bl-none bg-gray-200 text-gray-600">
-                        Hello world
+                        {{ chat.message }}
                     </span>
                 </div>
-                <img src="https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg?size=338&ext=jpg&ga=GA1.1.1546980028.1704326400&semt=sph"
-                    alt="" class="h-6 w-6 rounded-full order-1">
-            </div>
-        </div>
 
-        <div class="chat-message">
-            <div class="flex items-end">
-                <div class="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-2 items-start">
-                    <span class="px-4 py-2 rounded-lg inline-block rounded-bl-none bg-gray-200 text-gray-600">
-                        How is your day going ?
-                    </span>
-                </div>
-                <img src="https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg?size=338&ext=jpg&ga=GA1.1.1546980028.1704326400&semt=sph"
-                    alt="" class="h-6 w-6 rounded-full order-1">
-            </div>
-        </div>
-
-        <!-- My message -->
-        <div class="chat-message">
-            <div class="flex items-end justify-end">
-                <div class="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-2 items-end">
+                <div  v-if="isMe(chat)" class="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-2 items-end">
                     <span class="px-4 py-2 rounded-lg inline-block rounded-bl-none bg-purple-700 text-white">
-                        I am doing well. What about you ?
+                       {{ chat.message }}
                     </span>
                 </div>
-                <img src="https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg?size=338&ext=jpg&ga=GA1.1.1546980028.1704326400&semt=sph"
+                <img :src="chat.avatar"
                     alt="" class="h-6 w-6 rounded-full order-1">
             </div>
         </div>
-
-        <!-- First message -->
-        <div class="chat-message">
-            <div class="flex items-end">
-                <div class="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-2 items-start">
-                    <span class="px-4 py-2 rounded-lg inline-block rounded-bl-none bg-gray-200 text-gray-600">
-                        How is your day going ?
-                    </span>
-                </div>
-                <img src="https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg?size=338&ext=jpg&ga=GA1.1.1546980028.1704326400&semt=sph"
-                    alt="" class="h-6 w-6 rounded-full order-1">
-            </div>
-        </div>
-
-        <!-- First message -->
-        <div class="chat-message">
-            <div class="flex items-end">
-                <div class="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-2 items-start">
-                    <span class="px-4 py-2 rounded-lg inline-block rounded-bl-none bg-gray-200 text-gray-600">
-                        How is your day going ?
-                    </span>
-                </div>
-                <img src="https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg?size=338&ext=jpg&ga=GA1.1.1546980028.1704326400&semt=sph"
-                    alt="" class="h-6 w-6 rounded-full order-1">
-            </div>
-        </div>
-
-        <!-- First message -->
-        <div class="chat-message">
-            <div class="flex items-end">
-                <div class="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-2 items-start">
-                    <span class="px-4 py-2 rounded-lg inline-block rounded-bl-none bg-gray-200 text-gray-600">
-                        How is your day going ?
-                    </span>
-                </div>
-                <img src="https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg?size=338&ext=jpg&ga=GA1.1.1546980028.1704326400&semt=sph"
-                    alt="" class="h-6 w-6 rounded-full order-1">
-            </div>
-        </div>
-
-        <!-- My message -->
-        <div class="chat-message">
-            <div class="flex items-end justify-end">
-                <div class="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-2 items-end">
-                    <span class="px-4 py-2 rounded-lg inline-block rounded-bl-none bg-purple-700 text-white">
-                        I am doing well. What about you ?
-                    </span>
-                </div>
-                <img src="https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg?size=338&ext=jpg&ga=GA1.1.1546980028.1704326400&semt=sph"
-                    alt="" class="h-6 w-6 rounded-full order-1">
-            </div>
-        </div>
-        <!-- My message -->
-        <div class="chat-message">
-            <div class="flex items-end justify-end">
-                <div class="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-2 items-end">
-                    <span class="px-4 py-2 rounded-lg inline-block rounded-bl-none bg-purple-700 text-white">
-                        I am doing well. What about you ?
-                    </span>
-                </div>
-                <img src="https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg?size=338&ext=jpg&ga=GA1.1.1546980028.1704326400&semt=sph"
-                    alt="" class="h-6 w-6 rounded-full order-1">
-            </div>
-        </div>
-        <!-- My message -->
-        <div class="chat-message">
-            <div class="flex items-end justify-end">
-                <div class="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-2 items-end">
-                    <span class="px-4 py-2 rounded-lg inline-block rounded-bl-none bg-purple-700 text-white">
-                        Whatsup Bro ?
-                    </span>
-                </div>
-                <img src="https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg?size=338&ext=jpg&ga=GA1.1.1546980028.1704326400&semt=sph"
-                    alt="" class="h-6 w-6 rounded-full order-1">
-            </div>
-        </div>
-
-
-
+       
 
     </perfect-scrollbar>
 </template>
+<script>
+
+export default {
+    data(){
+        return {
+            messages:[
+                {
+                    id:1,
+                    causer:'friend',
+                    message: 'Hello fr',
+                    avatar: 'https://i.pravatar.cc/150?img=1',
+                },
+                {
+                    id:3,
+                    causer:'me',
+                    message: 'Hi fr. How are you doing?',
+                    avatar: 'https://i.pravatar.cc/150?img=2',
+                },
+                {
+                    id:3,
+                    causer:'friend',
+                    message: 'I am doing well. What about you?',
+                    avatar: 'https://i.pravatar.cc/150?img=1',
+                },
+                {
+                    id:4,
+                    causer:'friend',
+                    message: 'Today, We have a meeting over zoom.',
+                    avatar: 'https://i.pravatar.cc/150?img=1',
+                },
+                {
+                    id:5,
+                    causer:'friend',
+                    message: 'When you are available . please let me know',
+                    avatar: 'https://i.pravatar.cc/150?img=1',
+                },
+            ]
+        }
+    },
+
+    methods:{
+        isFriend(chat)
+        {
+            return chat.causer == 'me' ? false : true;
+        },
+
+        isMe(chat)
+        {
+            return chat.causer == 'me' ? true : false;
+        }
+    }
+}
+
+</script>
