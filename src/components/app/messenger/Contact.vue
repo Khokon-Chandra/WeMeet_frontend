@@ -37,7 +37,7 @@
 
 
                 <perfect-scrollbar
-                    class="contact-items overflow-y-auto scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-light scrollbar-w-2 scrolling-touch">
+                    class="contact-items overflow-y-auto scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-light scrollbar-w-2 scrolling-touch px-1 pt-1">
 
                     <div v-for="contact in people" :key="contact.id"
                         class="relative rounded-lg px-2 py-2 flex items space-x-3 hover:border-gray-400 focus-within:ring-2 mb-3 hover:bg-gray-200">
