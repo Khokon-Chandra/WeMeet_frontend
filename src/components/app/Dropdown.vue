@@ -17,7 +17,7 @@
               <a href="#" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm']">Support</a>
             </MenuItem>
             <MenuItem v-slot="{ active }">
-              <a href="#" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm']">Profile</a>
+                <router-link :to="{name:'profile'}" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm']">Profile</router-link>
             </MenuItem>
             <form method="POST" action="#">
               <MenuItem v-slot="{ active }">

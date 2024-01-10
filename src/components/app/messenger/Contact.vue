@@ -2,7 +2,7 @@
     <div class="border-b border-gray-200 xl:border-b-0 xl:flex-shrink-0 xl:w-80 xl:border-r xl:border-gray-200 bg-gray-50">
         <div class="h-full pl-4 pr-2 py-6 sm:pl-6 lg:pl-8 xl:pl-0">
 
-            <div class="contact relative overflow-hidden px-1">
+            <div class="contact relative overflow-hidden px-1 py-1">
 
                 <div
                     class="relative rounded-lg px-2 py-2 flex items-center space-x-3 hover:border-gray-400 focus-within:ring-2 focus-within:ring-offset-2 mb-5">

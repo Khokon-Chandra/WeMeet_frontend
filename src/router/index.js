@@ -1,9 +1,11 @@
-import Dashboard from "@/views/admin/Dashboard.vue";
-import UserListPage from "@/views/admin/user/UsersList.vue";
-import HomePage from "@/views/app/Messenger.vue";
 import LoginPage from "@/views/auth/Login.vue";
 import RegisterPage from "@/views/auth/Register.vue";
 import Admin from "@/views/layouts/Admin.vue";
+import AppLayout from "@/views/layouts/App.vue";
+
+import AppRoutes from "@/router/app";
+import AdminRoutes from "@/router/admin";
+
 import { createRouter, createWebHistory } from "vue-router";
 
 const routes = [
@@ -18,31 +20,25 @@ const routes = [
     },
 
     {
-        path:'/',
-        component: HomePage
+        path: '/',
+        component: AppLayout,
+        children: [
+          ...AppRoutes
+        ]
     },
+
+
     // Adnin
     {
-        path:"/admin", 
+        path: "/admin",
         redirect: "/admin/dashboard",
         component: Admin,
         children: [
-            {
-                path: "dashboard",
-                component: Dashboard,
-            },
-            {
-                path: "users-list",
-                component: UserListPage,
-            },
-            {
-                path: "settings",
-                component: Dashboard,
-            },
+            ...AdminRoutes
         ]
     },
-    {path:"/", component: LoginPage},
-    {path:"/register", component: RegisterPage},
+    { path: "/", component: LoginPage },
+    { path: "/register", component: RegisterPage },
 ];
 
 const router = createRouter({

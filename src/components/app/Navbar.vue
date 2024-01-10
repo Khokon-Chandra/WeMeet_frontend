@@ -21,10 +21,7 @@
                         <div
                             class="ml-4 relative flex-shrink-0 text-sm text-white focus:ring-1 focus:ring-offset-1 foduc:ring-white">
 
-
                             <Dropdown></Dropdown>
-
-
                         </div>
                     </div>
                 </div>
