@@ -29,7 +29,7 @@
                         <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email</label>
                         <div class="mt-2">
                             <input id="email" v-model="user.email" type="text" autocomplete="email" required
-                                class="block w-full rounded-md border-0 py-1.5 ring-offset-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+                                class="block w-full rounded-md border-0 py-1.5 px-2 ring-offset-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
                         </div>
                     </div>
 
@@ -43,14 +43,49 @@
                         <div class="mt-2">
                             <input id="password" v-model="user.password" type="password" autocomplete="current-password"
                                 required
-                                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+                                class="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
                         </div>
                     </div>
 
                     <div>
-                        <button type="submit"
-                            class="flex w-full bg-purple-800 justify-center rounded-md px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-purple-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Sign
-                            in</button>
+                        <button
+              type="submit"
+              :disabled="loading"
+              class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              :class="{
+                'cursor-not-allowed': loading,
+                'hover:bg-purple-700': loading,
+              }"
+            >
+              <svg
+                v-if="loading"
+                class="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <circle
+                  class="opacity-25"
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  stroke-width="4"
+                ></circle>
+                <path
+                  class="opacity-75"
+                  fill="currentColor"
+                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                ></path>
+              </svg>
+              <span class="absolute left-0 inset-y-0 flex items-center pl-3">
+                <LockClosedIcon
+                  class="h-5 w-5 text-indigo-500 group-hover:text-indigo-400"
+                  aria-hidden="true"
+                />
+              </span>
+              Sign in
+            </button>
                     </div>
                 </form>
                 <p class="mt-6 text-center text-sm text-gray-500">
@@ -65,6 +100,8 @@
 </template>
 <script>
 import store from '@/store';
+import router from '@/router';
+
 
 export default {
     data() {
@@ -85,11 +122,11 @@ export default {
                 .dispatch("login", this.user)
                 .then(() => {
                     this.loading = false
-                    router.push({ name: "app.messenger" });
+                    router.push({ path: '/' });
                 })
                 .catch(({ response }) => {
                     this.loading = false;
-                    this.errorMessage = response.data.message || response.error;
+                    this.errorMessage = response.data.message
                 });
         }
     }

@@ -67,7 +67,6 @@
 </template>
 <script setup>
 
-import Navbar from "../../components/app/Navbar.vue";
 import Contact from "../../components/app/messenger/Contact.vue";
 import MessageBody from "../../components/app/messenger/MessageBody.vue";
 import Profile from "../../components/app/messenger/Profile.vue";
