@@ -7,23 +7,36 @@ import AppRoutes from "@/router/app";
 import AdminRoutes from "@/router/admin";
 
 import { createRouter, createWebHistory } from "vue-router";
+import store from "@/store";
 
 const routes = [
     {
         path: "/login",
-        component: LoginPage
+        name: "login",
+        component: LoginPage,
+        meta: {
+            requireGuest: true,
+        }
     },
 
     {
         path: "/register",
-        component: RegisterPage
+        name: "register",
+        component: RegisterPage,
+        meta: {
+            requireGuest: true,
+        }
     },
 
     {
         path: '/',
+        name:"app",
         component: AppLayout,
+        meta: {
+            requiresAuth: true
+        },
         children: [
-          ...AppRoutes
+            ...AppRoutes
         ]
     },
 
@@ -45,5 +58,16 @@ const router = createRouter({
     routes,
     history: createWebHistory(),
 });
+
+router.beforeEach((to, from, next) => {
+    if (to.meta.requiresAuth && !store.state.basic.user.token) {
+        next({ name: 'login' })
+    } else if (to.meta.requiresGuest && store.state.basic.user.token) {
+        next({ name: 'app.messenger' })
+    } else {
+        next();
+    }
+
+})
 
 export default router;
