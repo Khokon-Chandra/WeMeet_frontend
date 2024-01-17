@@ -18,10 +18,12 @@
     "@headlessui/vue": "^1.7.17",
     "@heroicons/vue": "^2.1.1",
     "@popperjs/core": "^2.11.8",
+    "axios": "^1.6.5",
     "vue": "^3.2.25",
     "vue-router": "^4.2.5",
     "vue3-chat-scroll": "^0.2.0",
-    "vue3-perfect-scrollbar": "^1.6.1"
+    "vue3-perfect-scrollbar": "^1.6.1",
+    "vuex": "^4.1.0"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.5.2",
