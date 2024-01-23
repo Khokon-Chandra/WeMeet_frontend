@@ -13,12 +13,14 @@
                     <label for="name" class="block text-sm font-medium leading-6 text-gray-900">Name *</label>
                     <div class="mt-2">
                         <input id="name" v-model="user.name" type="text" autocomplete="name" required class="block w-full rounded-md border-0 py-1 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+                        <div v-if="errors.name" class="text-red-500 text-sm">{{ errors.name[0] }}</div>
                     </div>
                 </div>
                 <div>
                     <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email *</label>
                     <div class="mt-2">
                         <input id="email" v-model="user.email" type="text" autocomplete="email" required class="block w-full rounded-md border-0 py-1 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+                        <div v-if="errors.email" class="text-red-500 text-sm">{{ errors.email[0] }}</div>
                     </div>
                 </div>
 
@@ -26,6 +28,7 @@
                     <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Password *</label>
                     <div class="mt-2">
                         <input id="password" v-model="user.password" type="password" autocomplete="current-password" required class="block w-full rounded-md border-0 py-1 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+                        <div v-if="errors.password" class="text-red-500 text-sm">{{ errors.password[0] }}</div>
                     </div>
                 </div>
                 <div>
