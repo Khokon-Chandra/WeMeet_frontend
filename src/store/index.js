@@ -5,6 +5,7 @@ import * as adminMutations from './admin/mutations';
 import adminState from './admin/state';
 import * as mutations from './mutations';
 import state from './state';
+import pusher from '@/pusher';
 
 
 const moduleA = {

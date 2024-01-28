@@ -16,8 +16,30 @@
     </div>
   </div>
 </template>
-<script setup>
+<script>
 
+import store from "@/store";
 import Navbar from "../../components/app/Navbar.vue";
+export default {
+  data(){
+    return {
 
+    }
+  },
+  components: {
+    Navbar
+  },
+//   mounted() {
+//     this.setUser()
+// },
+methods: {
+  // setUser(){
+  //   store.dispatch("getCurrentUser")
+  //     .then((response)=>{
+  //     }).catch(()=>{
+  //       this.errorMessage = "Internal server error";
+  //     });
+  // }
+},
+}
 </script>
