@@ -8,13 +8,13 @@
                     class="relative rounded-lg px-2 py-2 flex items-center space-x-3 hover:border-gray-400 focus-within:ring-2 focus-within:ring-offset-2 mb-5">
                     <div class="flex-shrink-0">
                         <img class="h-16 w-16 rounded-full"
-                            src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                            :src="user.avatar"
                             alt="">
                     </div>
                     <div class="flex-1 min-w-0">
                         <a href="#" class="focus:outline-none">
                             <span class="absolute inset-0"></span>
-                            <p class="text-sm font-bold text-purple-700">Boris Kemiron</p>
+                            <p class="text-sm font-bold text-purple-700">{{ user.name }}</p>
                             <p class="text-sm text-gray-500 truncate">Software Engineer</p>
                         </a>
                     </div>
@@ -39,7 +39,8 @@
                 <perfect-scrollbar
                     class="contact-items overflow-y-auto scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-light scrollbar-w-2 scrolling-touch px-1 pt-1">
 
-                    <div v-for="contact in people" :key="contact.id"
+                    <div v-for="contact in contacts" :key="contact.id"
+                        @click="showMessage(contact)"
                         class="relative rounded-lg px-2 py-2 flex items space-x-3 hover:border-gray-400 focus-within:ring-2 mb-3 hover:bg-gray-200">
                         <div class="flex-shrink-0 relative">
                             <img :src="contact.avatar" alt="" class="h-10 w-10 rounded-full">
@@ -69,87 +70,41 @@
 </template>
 
 <script>
-
+import store from '@/store';
 export default {
     data() {
         return {
-
-            people: [
-                {
-                    id: 1,
-                    avatar: 'https://i.pravatar.cc/150?img=1',
-                    name: ' Mr. Jhulfiker',
-                    active: true,
-                    last_message: 'Hi Jhuli',
-                    last_message_at: '12:40 AM',
-                    count_unseen: 2
-                },
-                {
-                    id: 2,
-                    avatar: 'https://i.pravatar.cc/150?img=2',
-                    name: ' Mr. Jhulfiker',
-                    active: false,
-                    last_message: 'Hello',
-                    last_message_at: '12:40 AM',
-                    count_unseen: 3
-                },
-                {
-                    id: 3,
-                    avatar: 'https://i.pravatar.cc/150?img=3',
-                    name: ' Mr. Jhone',
-                    active: true,
-                    last_message: 'Hello',
-                    last_message_at: '12:40 AM',
-                    count_unseen: 1
-                },
-                {
-                    id: 4,
-                    avatar: 'https://i.pravatar.cc/150?img=4',
-                    name: ' Mr. Kali jara',
-                    active: true,
-                    last_message: 'Hello',
-                    last_message_at: '12:40 AM',
-                    count_unseen: 0
-                },
-                {
-                    id: 5,
-                    avatar: 'https://i.pravatar.cc/150?img=5',
-                    name: ' Mr. Avatar ',
-                    active: true,
-                    last_message: 'good morning',
-                    last_message_at: '12:40 AM',
-                    count_unseen: 3
-                },
-                {
-                    id: 6,
-                    avatar: 'https://i.pravatar.cc/150?img=6',
-                    name: ' Mr. Avatar ',
-                    active: true,
-                    last_message: 'good morning',
-                    last_message_at: '12:40 AM',
-                    count_unseen: 3
-                },
-                {
-                    id: 7,
-                    avatar: 'https://i.pravatar.cc/150?img=7',
-                    name: ' Mr. Avatar ',
-                    active: true,
-                    last_message: 'good morning',
-                    last_message_at: '12:40 AM',
-                    count_unseen: 2
-                },
-                {
-                    id: 8,
-                    avatar: 'https://i.pravatar.cc/150?img=8',
-                    name: ' Mr. Avatar ',
-                    active: true,
-                    last_message: 'good morning',
-                    last_message_at: '12:40 AM',
-                    count_unseen:1
-                }
-            ]
+            contacts: []
         }
+    },
+    mounted(){
+        this.getContact()
+    },
+    computed: {
+        user(){
+            console.log(store.state.basic.user.data);
+            return store.state.basic.user.data;
+        }
+    },
+    methods: {
+    getContact(){
+      store.dispatch("contact").then((response)=>{
+        this.contacts = response.data;
+      }).catch(()=>{
+        this.errorMessage = "Internal server error!"
+      });
+    },
+    showMessage(data){
+        store.state.basic.selectedUser = data;
+        store.dispatch("messages", data.id)
+            .then((response)=>{
+                store.state.basic.messages = response.data;
+            })
+            .catch((response)=>{
+                this.errorMessage = "Internal server error!";
+            });
     }
+  }
 }
 </script>
 

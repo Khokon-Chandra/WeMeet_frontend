@@ -1,8 +1,15 @@
 <template>
     <perfect-scrollbar id="message"
         class="flex flex-col space-y-4 p-3 overflow-y-auto scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-light scrollbar-w-2 scrolling-touch" v-chat-scroll>
-            
-        <div v-for="chat in messages" :key="chat.id" class="chat-message">
+
+        <div class="m-auto text-center mb-5">
+            <img :src="selectedUser.avatar"
+                alt="" class="w-36 h-36 rounded-full m-auto">
+            <h2 class="m-auto text-2xl font-bold text-gray-600 mt-2 mb-0">{{selectedUser.name}}</h2>
+            <h2 class="m-auto text-1xl font-bold text-gray-500 mt-2">Software Engineer</h2>
+        </div>
+        <!-- Messages -->
+        <div v-for="chat in messages.slice().reverse()" :key="chat.id" class="chat-message">
             <div class="flex items-end" :class="[isFriend(chat)? '' : 'justify-end']" >
                 <div v-if="isFriend(chat)" class="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-2 items-start">
                     <span class="px-4 py-2 rounded-lg inline-block rounded-bl-none bg-gray-200 text-gray-600">
@@ -24,54 +31,33 @@
     </perfect-scrollbar>
 </template>
 <script>
+import store from '@/store';
+
 
 export default {
     data(){
         return {
-            messages:[
-                {
-                    id:1,
-                    causer:'friend',
-                    message: 'Hello fr',
-                    avatar: 'https://i.pravatar.cc/150?img=1',
-                },
-                {
-                    id:3,
-                    causer:'me',
-                    message: 'Hi fr. How are you doing?',
-                    avatar: 'https://i.pravatar.cc/150?img=2',
-                },
-                {
-                    id:3,
-                    causer:'friend',
-                    message: 'I am doing well. What about you?',
-                    avatar: 'https://i.pravatar.cc/150?img=1',
-                },
-                {
-                    id:4,
-                    causer:'friend',
-                    message: 'Today, We have a meeting over zoom.',
-                    avatar: 'https://i.pravatar.cc/150?img=1',
-                },
-                {
-                    id:5,
-                    causer:'friend',
-                    message: 'When you are available . please let me know',
-                    avatar: 'https://i.pravatar.cc/150?img=1',
-                },
-            ]
         }
     },
-
+    computed: {
+        messages(){
+            return store.state.basic.messages;
+        },
+        selectedUser(){
+            return store.state.basic.selectedUser;
+        }
+    },
     methods:{
         isFriend(chat)
         {
-            return chat.causer == 'me' ? false : true;
+            const user = store.state.basic.user.data.id;
+            return chat.user_id == user ? false : true;
         },
 
         isMe(chat)
         {
-            return chat.causer == 'me' ? true : false;
+            const user = store.state.basic.user.data.id;
+            return chat.user_id == user ? true : false;
         }
     }
 }

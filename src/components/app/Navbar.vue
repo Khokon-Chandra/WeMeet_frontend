@@ -15,13 +15,13 @@
                     <div class="flex items-center justify-end">
                         <div class="flex">
                             <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-white hover:text-white">
-                                Mr. Hervey
+                                {{ user.name }}
                             </a>
                         </div>
                         <div
                             class="ml-4 relative flex-shrink-0 text-sm text-white focus:ring-1 focus:ring-offset-1 foduc:ring-white">
 
-                            <Dropdown></Dropdown>
+                            <Dropdown :user="user"></Dropdown>
                         </div>
                     </div>
                 </div>
@@ -29,6 +29,15 @@
         </div>
     </nav>
 </template>
-<script setup>
+<script >
 import Dropdown from "@/components/app/Dropdown.vue"
+import store from "@/store";
+export default {
+    components: {Dropdown},
+    computed: {
+        user(){
+            return store.state.basic.user.data;
+        }
+    }
+}
 </script>
